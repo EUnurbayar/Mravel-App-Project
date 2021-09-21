@@ -1,15 +1,9 @@
 import React,{useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 
-
-
-
-
-
 function CharactersDetails() {
     const [character, setCharacter] = useState({});
     const {name} = useParams();
-    // const name ='hulk'
     
     const url = `https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${process.env.REACT_APP_MARVEL_APP_KEY}`;
   
@@ -23,32 +17,25 @@ function CharactersDetails() {
             .catch(console.error)
     }, [])
    
-
-    // function onClick (event){
-    //     event.preventDefault();
-        
-     
-    // }
-
     return ( 
-        <div key={character.id}>
+        <div className="char-dtl" key={character.id}>
              <div>
-                 <h1> {character.name} </h1>
-                 <p>{character.description}</p>
+                 <h1 className="char-name"> ★ {character.name}  ★ </h1>
+                 <p className='descrition'>{character.description}</p>
              </div>
-            <img src={character.thumbnail && character.thumbnail.path + '.' + character.thumbnail.extension} alt="" />
+            <img className="char-img" src={character.thumbnail && character.thumbnail.path + '.' + character.thumbnail.extension} alt={character.image} />
+           
             <div className='li-container' key={character.id}>
            
-             
-            {character.comics && character.comics.items.map((item) => (
+                 {character.comics && character.comics.items.map((item) => (
                  <li clsassName='comics-li' >Comics: {item.name}</li>
       
-            ))}  
+                 ))}  
 
            
-            {character.series && character.series.items.map((item) => (
-                 <li clsassName='series-li'> {item.name}</li>
-            ))}
+                 {character.series && character.series.items.map((item) => (
+                  <li clsassName='series-li'>Series: {item.name}</li>
+                  ))}
                 
              </div>
             

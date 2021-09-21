@@ -1,23 +1,18 @@
 import './App.css';
-import { useState, useEffect } from 'react'
-import { Route, Link} from 'react-router-dom';
-import CharactersDetails from './components/CharactersDtails/CharactersDetails'
-// import Character from './components/Character/Character';
+import { Route } from 'react-router-dom';
+import CharactersDetails from './components/CharactersDtails/CharactersDetails';
 import Nav from './components/Nav/Nav';
 import Search from './components/Search/Search';
-
-
+import Body from './components/Body/Body';
 
 function App() {
   return (
     <div className="App">
-    
        <Nav /> 
-      <Route path="/search" exact render={()=> <Search />}/>
-      {/* <Route path="/" exact render={() => <Character /> } /> */}
-     <Route path="/details/:name" render={() => <CharactersDetails />} />
-     </div>
-
+       <Route path="/nav" exact render={() => <Body/>} />
+       <Route path="/search" exact render={()=> <Search />}/>
+       <Route path="/details/:name" render={() => <CharactersDetails />} />
+    </div>
   );
 }
 
