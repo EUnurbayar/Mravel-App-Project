@@ -27,6 +27,11 @@
 .App-link {
   color: #61dafb;
 }
+button {
+ display: flex;
+ 
+
+}
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +40,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  background-color:black;
+  /* background-image: url("https://www.shortlist.com/media/imager/202004/47779-posts.article_lg.jpg") ; */
+  display: flex;
+  color:white;
+  
+}
+ 
+.search-container {
+  display: inline-block;
+ 
+}
+.select{
+  position: absolute;
 }

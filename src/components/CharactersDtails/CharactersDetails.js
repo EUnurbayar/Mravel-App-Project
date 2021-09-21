@@ -1,48 +1,60 @@
 import React,{useState, useEffect} from "react";
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+
+
 
 
 
 
 function CharactersDetails() {
-    const [characters, setCharacters] = useState([]);
+    const [character, setCharacter] = useState({});
     const {name} = useParams();
-//    const name = `thor`
-    const url = `https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=9cc0f353322c107d90815f659fa283a3`;
+    // const name ='hulk'
+    
+    const url = `https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${process.env.REACT_APP_MARVEL_APP_KEY}`;
   
     useEffect(() => {
         fetch(url)
             .then((res) => res.json())
             .then((res) => {
-                setCharacters(res)
-                console.log(res)
+                setCharacter(res.data.results[0])
+                console.log(res.data.results[0])
             })
             .catch(console.error)
     }, [])
+   
 
-    
+    // function onClick (event){
+    //     event.preventDefault();
+        
+     
+    // }
+
     return ( 
-        <div>
-             <h1>{characters.name}</h1>
-             <img 
-                src={characters.image}
-                alt={characters.name} 
-             />
+        <div key={character.id}>
+             <div>
+                 <h1> {character.name} </h1>
+                 <p>{character.description}</p>
+             </div>
+            <img src={character.thumbnail && character.thumbnail.path + '.' + character.thumbnail.extension} alt="" />
+            <div className='li-container' key={character.id}>
+           
+             
+            {character.comics && character.comics.items.map((item) => (
+                 <li clsassName='comics-li' >Comics: {item.name}</li>
+      
+            ))}  
+
+           
+            {character.series && character.series.items.map((item) => (
+                 <li clsassName='series-li'> {item.name}</li>
+            ))}
+                
+             </div>
+            
        </div>
-        // <div>
-        //     {characters.map((character) => {
-        //         return (
-        //            <div>
-        //                 <h1>{character.name}</h1>
-        //                 <img 
-        //                 src={character.name}
-        //                 alt={character.name} 
-        //                 />
-        //              </div>
-        //     )
-        // })}
-        // </div> 
+        
     );
-  }
+  }    
   
   export default CharactersDetails;

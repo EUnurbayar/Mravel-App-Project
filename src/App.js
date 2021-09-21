@@ -1,18 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react'
-import { Router, Link, Redirect } from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 import CharactersDetails from './components/CharactersDtails/CharactersDetails'
-import Characters from './components/Characters/Characters';
+// import Character from './components/Character/Character';
+import Nav from './components/Nav/Nav';
+import Search from './components/Search/Search';
+
+
+
 function App() {
   return (
     <div className="App">
-      
-   
-    {/* <Characters /> */}
-    <Router path="/" exact component={Characters} />
-    <Router path="/" exact component={CharactersDetails}/>
-    </div>
+    
+       <Nav /> 
+      <Route path="/search" exact render={()=> <Search />}/>
+      {/* <Route path="/" exact render={() => <Character /> } /> */}
+     <Route path="/details/:name" render={() => <CharactersDetails />} />
+     </div>
+
   );
 }
 
