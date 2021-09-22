@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 function CharactersDetails() {
     const [character, setCharacter] = useState({});
     const {name} = useParams();
-     const [error, setError] =useState(null);
     
     const url = `https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${process.env.REACT_APP_MARVEL_APP_KEY}`;
   
@@ -12,30 +11,21 @@ function CharactersDetails() {
         fetch(url)
             .then((res) => res.json())
             .then((res) => {
-                if(res.data.results){
-                    setCharacter(res.data.results[0])
-                    console.log(res)
-                }
-               
+                setCharacter(res.data.results[0])
+                console.log(res.data.results[0])
             })
             .catch((error) => {
-                setError('wrong input')
-                // setCharacter('not found')
-                console.log(error)
+                setCharacter('not found')
+                console.log("error")
         
               
                
             })
     
     }, [url])
-    console.log(character)
-    if(error !== null){
-        return <h1>Caracter not found</h1>
-    } else {
-
-    
+   
     return ( 
-        
+       
     
         <div className="char-dtl" key={character.id}>
              <div>
@@ -59,8 +49,7 @@ function CharactersDetails() {
        </div>
         
     );
-                 }
-                 
+              
   }    
   
   export default CharactersDetails;
