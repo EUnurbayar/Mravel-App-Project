@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 function CharactersDetails() {
     const [character, setCharacter] = useState({});
     const {name} = useParams();
+     const [error, setError] =useState(null);
     
     const url = `https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${process.env.REACT_APP_MARVEL_APP_KEY}`;
   
@@ -11,13 +12,31 @@ function CharactersDetails() {
         fetch(url)
             .then((res) => res.json())
             .then((res) => {
-                setCharacter(res.data.results[0])
-                console.log(res.data.results[0])
+                if(res.data.results){
+                    setCharacter(res.data.results[0])
+                    console.log(res)
+                }
+               
             })
-            .catch(console.error)
-    }, [])
-   
+            .catch((error) => {
+                setError('wrong input')
+                // setCharacter('not found')
+                console.log(error)
+        
+              
+               
+            })
+    
+    }, [url])
+    console.log(character)
+    if(error !== null){
+        return <h1>Caracter not found</h1>
+    } else {
+
+    
     return ( 
+        
+    
         <div className="char-dtl" key={character.id}>
              <div>
                  <h1 className="char-name"> ★ {character.name}  ★ </h1>
@@ -29,10 +48,8 @@ function CharactersDetails() {
            
                  {character.comics && character.comics.items.map((item) => (
                  <li clsassName='comics-li' >Comics: {item.name}</li>
-      
                  ))}  
 
-           
                  {character.series && character.series.items.map((item) => (
                   <li clsassName='series-li'>Series: {item.name}</li>
                   ))}
@@ -42,6 +59,8 @@ function CharactersDetails() {
        </div>
         
     );
+                 }
+                 
   }    
   
   export default CharactersDetails;
