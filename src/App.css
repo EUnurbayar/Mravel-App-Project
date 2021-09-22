@@ -53,7 +53,7 @@ nav {
   color:#ff0000d2;
   height: 100px;
   font-family: 'Rampart One', cursive;
-  font-size: 30px;
+  font-size: xx-large;
   height: auto;
  
   
@@ -121,24 +121,40 @@ form {
    color:brown;
    font-size: 30px;
    font-family: 'Indie Flower', cursive;
+   padding: 25px;
  }
  
  .char-img {
-   width: 100%;
+   width: 50%;
+   padding: 15px 15px 15px 15px;
+   margin: auto;
  }
 
  .li-container {
 
-   display: grid;
-   grid-template-rows: (2) , 1fr 1fr;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   justify-content: center;
    color: brown;
+   list-style: none;
+  /* margin-left: 40px; */
+   padding: 25px 25px;
+  
 
  }
 
  .comics-li {
-  
-grid-row: 1;
+ 
+  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+
  }
  .series-li {
-   grid-row: 2;
+ 
+   justify-content: flex-end;
+   flex-direction: column;
+   text-align: center;
  }

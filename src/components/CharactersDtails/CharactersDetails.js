@@ -15,10 +15,7 @@ function CharactersDetails() {
                 console.log(res.data.results[0])
             })
             .catch((error) => {
-                setCharacter('not found')
-                console.log("error")
-        
-              
+               console.log("error") 
                
             })
     
@@ -29,27 +26,32 @@ function CharactersDetails() {
     
         <div className="char-dtl" key={character.id}>
              <div>
-                 <h1 className="char-name"> ★ {character.name}  ★ </h1>
+                 <h1 className="char-name"> ★ {character.name} ★ </h1>
                  <p className='descrition'>{character.description}</p>
              </div>
             <img className="char-img" src={character.thumbnail && character.thumbnail.path + '.' + character.thumbnail.extension} alt={character.image} />
            
             <div className='li-container' key={character.id}>
            
+            <div clsassName='comics-li'>
+                 <h1>COMICS</h1>
                  {character.comics && character.comics.items.map((item) => (
-                 <li clsassName='comics-li' >Comics: {item.name}</li>
+                 <li> 💥 COMICS NAME: - {item.name} </li>
                  ))}  
-
+           </div>
+            
+            <div clsassName='series-li'>
+                <h1>SERIES</h1>
                  {character.series && character.series.items.map((item) => (
-                  <li clsassName='series-li'>Series: {item.name}</li>
+                  <li> 🔥 SERIES NAME: - {item.name} </li>
                   ))}
-                
+             </div>
              </div>
             
        </div>
         
     );
               
-  }    
+  }   
   
   export default CharactersDetails;
