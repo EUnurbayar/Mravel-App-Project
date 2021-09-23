@@ -13,7 +13,7 @@ function CharactersDetails() {
             .then((res) => res.json())
             .then((res) => {
                 setSearch(true)
-                console.log(res)
+    
                 if(res.data.results.length === 0){
                 setCharacter(null)
                 setError(true)
@@ -22,7 +22,7 @@ function CharactersDetails() {
                 }       
             })
             .catch((error) => {
-               console.log("error") 
+
             } )
 
     },[])

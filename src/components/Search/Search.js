@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Search() {
    const initialState ={
         searchtype: '',
     }
-const history =useHistory();
+    const history =useHistory(); 
+    console.log('history',history);
      const [formState, setFormState] = useState(initialState);
         function handleSubmit(event) {
          event.preventDefault();
@@ -24,7 +25,7 @@ const history =useHistory();
                 <button className="submit-btn"> 💥 submit </button>
             </form>
         
-        </div>
+        </div>  
     );
 }
 
