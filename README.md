@@ -11,7 +11,8 @@ Deployed app: https://vigorous-bell-24b9f1.netlify.app/nav
  - API ES6
 
  ### Screen shot
- - ![marvel-app-project] (https://user-images.githubusercontent.com/74628166/134524967-9f20584c-e87f-45ed-ba8d-1cb39f098dc2.png)
+
+ (https://user-images.githubusercontent.com/74628166/134524967-9f20584c-e87f-45ed-ba8d-1cb39f098dc2.png)
 
 ## Installation Instruction
 
