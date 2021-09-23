@@ -1,7 +1,7 @@
 ### Project Description
 - The "marvel-app-project" is second projec I made. This application uses Marvel Personal Comics API key to load selected charactr's discription, image , name of comics and series. 
 
-Deployed app: https://vigorous-bell-24b9f1.netlify.app/nav 
+- Deployed app: https://vigorous-bell-24b9f1.netlify.app/nav 
 ### Technologies Used
  - JavaScript
  - HTML
